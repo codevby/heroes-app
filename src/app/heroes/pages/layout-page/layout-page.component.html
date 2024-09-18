@@ -1,0 +1,55 @@
+<mat-sidenav-container fullscreen>
+
+  <mat-sidenav #sidenav mode="push" [ngStyle]="{ width: '250px' }">
+
+    <mat-toolbar color="primary">
+      <span>Menu</span>
+      <span class="spacer"></span>
+      <button mat-icon-button color="warn" (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <hr style="
+    width: 90%;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    ">
+
+    <mat-nav-list>
+      <mat-list-item
+        *ngFor="let item of sidebarItems"
+        [routerLink]="item.url"
+        (click)="sidenav.toggle()"
+      >
+        <mat-icon matListItemIcon> {{ item.icon }} </mat-icon>
+        {{ item.label }}
+      </mat-list-item>
+    </mat-nav-list>
+
+  </mat-sidenav>
+
+
+
+  <mat-toolbar color="primary" style="background-color: #005CBB;">
+
+    <button mat-icon-button color="warn" (click)="sidenav.toggle()">
+      <mat-icon style="color: white;">menu</mat-icon>
+    </button>
+
+    <span class="spacer"></span>
+
+    <span style="color: white;"> {{ user?.email }} </span>
+
+    <button mat-button color="warn" style="color: white;" (click)="onLogout()">
+      <mat-icon>logout</mat-icon>
+      Logout
+    </button>
+
+  </mat-toolbar>
+
+  <div class="container pb-2">
+    <router-outlet></router-outlet>
+  </div>
+
+</mat-sidenav-container>

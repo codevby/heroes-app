@@ -1,0 +1,73 @@
+
+<ng-template #divLoading>
+
+  <div class="spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+
+</ng-template>
+
+
+
+<div *ngIf="hero; else divLoading" class="grid p-3 content">
+
+  <mat-card class="col-12 sm:col-6">
+
+    <mat-card-header>
+      <mat-card-title> {{ hero.alter_ego }} </mat-card-title>
+      <mat-card-subtitle> {{hero.superhero}} </mat-card-subtitle>
+    </mat-card-header>
+
+    <img [src]="hero | heroImage" [alt]="hero.superhero" mat-card-image>
+
+  </mat-card>
+
+
+
+  <mat-card class="col-12 sm:col-6">
+
+    <mat-card-header>
+      <mat-card-title> Información </mat-card-title>
+      <mat-card-subtitle> {{hero.superhero}} </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item> Primera aparición: {{ hero.first_appearance }} </mat-list-item>
+        <mat-list-item> Personaje: {{ hero.characters}} </mat-list-item>
+        <mat-list-item> Publisher: {{ hero.publisher }} </mat-list-item>
+        <mat-list-item> Alter Ego:{{ hero.alter_ego }} </mat-list-item>
+      </mat-list>
+
+      <button
+      mat-button
+      color="warn"
+      (click)="goBack()"
+      >
+        Regresar
+      </button>
+
+    </mat-card-content>
+
+  </mat-card>
+
+</div>
+
+
+<style>
+
+  img {
+    border-radius: 5px;
+  }
+
+  .spinner {
+    margin-inline: 45vw;
+    margin-top: 40vh;
+  }
+
+  .content {
+    width: 40%;
+    height: 40%;
+  }
+
+</style>
